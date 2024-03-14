@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP & ScrollTrigger Horizontal Overlapping Cards</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body> <!-- Apply smooth scrolling transition -->
+    <div class="cardscus">
+        <div class="cardslide card-1"
+            style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+            <div class="content-wrapper" style="
+            display: flex;
+            width: 100% !important;
+            height: 100% !important;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+        ">
+                <div style="
+    max-width: 500px;
+    padding-left: 40px;
+">
+                    <h2 style="
+    font-size: 55px;
+">Fiton Fitness</h2>
+                    <p>Our team of experienced mobile app developers initiated this project by working closely with
+                        Trulia,
+                        exploring Trulia's requirements and to architect a solution that would meet their business
+                        objectives. With our advanced technologies and best practices in mobile app development, we
+                        delivered a high quality mobile app to elevate Trulia’s user engagement and brand visibility.
+
+                    </p>
+                </div>
+                <div class="content-image" style="
+    height: 100%;
+">
+                    <img src="https://depextechnologies.com/dev/wp-content/uploads/2024/03/Untitled-design-81.png"
+                        alt="" style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: left;
+                ">
+                </div>
+            </div>
+        </div>
+        <div class="cardslide card-2">
+            <div class="content-wrapper" style="
+            display: flex;
+            width: 100% !important;
+            height: 100% !important;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+        ">
+                <div style="
+    max-width: 500px;
+    padding-left: 40px;
+">
+                    <h2 style="
+    font-size: 55px;
+">Fiton Fitness</h2>
+                    <p>Our team of experienced mobile app developers initiated this project by working closely with
+                        Trulia,
+                        exploring Trulia's requirements and to architect a solution that would meet their business
+                        objectives. With our advanced technologies and best practices in mobile app development, we
+                        delivered a high quality mobile app to elevate Trulia’s user engagement and brand visibility.
+
+                    </p>
+                </div>
+                <div class="content-image" style="
+    height: 100%;
+">
+                    <img src="https://depextechnologies.com/dev/wp-content/uploads/2024/03/Untitled-design-81.png"
+                        alt="" style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: left;
+                ">
+                </div>
+            </div>
+        </div>
+        <div class="cardslide card-3">
+            <div class="content-wrapper" style="
+            display: flex;
+            width: 100% !important;
+            height: 100% !important;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+        ">
+                <div style="
+    max-width: 500px;
+    padding-left: 40px;
+">
+                    <h2 style="
+    font-size: 55px;
+">Fiton Fitness</h2>
+                    <p>Our team of experienced mobile app developers initiated this project by working closely with
+                        Trulia,
+                        exploring Trulia's requirements and to architect a solution that would meet their business
+                        objectives. With our advanced technologies and best practices in mobile app development, we
+                        delivered a high quality mobile app to elevate Trulia’s user engagement and brand visibility.
+
+                    </p>
+                </div>
+                <div class="content-image" style="
+    height: 100%;
+">
+                    <img src="https://depextechnologies.com/dev/wp-content/uploads/2024/03/Untitled-design-81.png"
+                        alt="" style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: left;
+                ">
+                </div>
+            </div>
+        </div>
+        <div class="cardslide card-4">
+            <div class="content-wrapper" style="
+            display: flex;
+            width: 100% !important;
+            height: 100% !important;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+        ">
+                <div style="
+    max-width: 500px;
+    padding-left: 40px;
+">
+                    <h2 style="
+    font-size: 55px;
+">Fiton Fitness</h2>
+                    <p>Our team of experienced mobile app developers initiated this project by working closely with
+                        Trulia,
+                        exploring Trulia's requirements and to architect a solution that would meet their business
+                        objectives. With our advanced technologies and best practices in mobile app development, we
+                        delivered a high quality mobile app to elevate Trulia’s user engagement and brand visibility.
+
+                    </p>
+                </div>
+                <div class="content-image" style="
+    height: 100%;
+">
+                    <img src="https://depextechnologies.com/dev/wp-content/uploads/2024/03/Untitled-design-81.png"
+                        alt="" style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: left;
+                ">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollToPlugin.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        let wheelEventHandler; // Define the function in a scope accessible by both callbacks
+
+        // Adjust scroll speed during mousewheel for the specified section
+        ScrollTrigger.create({
+            trigger: ".cardscus",
+            start: "top",
+            end: "bottom",
+            onEnter: () => {
+                ScrollTrigger.defaults({ // sets the global default for all ScrollTriggers
+                    ease: "power2.inOut" // Use smooth easing in the ScrollTrigger
+                });
+
+                wheelEventHandler = (event) => {
+                    event.preventDefault();
+                    let scrollAmount = 50; // Default scroll amount to 5px per event
+
+                    // Check if the section is pinned
+                    const pinned = ScrollTrigger.getById("pin").isActive;
+
+                    // If the section is pinned, set scroll amount to 3px
+                    if (pinned) {
+                        scrollAmount = 9; // Set scroll amount to 3px when pinned
+                    }
+
+                    window.scrollBy(0, event.deltaY > 0 ? scrollAmount : -scrollAmount); // Scroll up or down based on deltaY value
+                };
+
+                window.addEventListener("wheel", wheelEventHandler, { passive: false });
+            },
+            onLeaveBack: () => {
+                // Reset scroll speed to default when leaving the specified section
+                ScrollTrigger.defaults({ // sets the global default for all ScrollTriggers
+                    ease: "power2.inOut" // default easing for ScrollTrigger
+                });
+
+                // Remove wheel event listener from the window object
+                window.removeEventListener("wheel", wheelEventHandler);
+            }
+        });
+
+        let timeln = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".cardscus",
+                id: "pin", // Assign an ID to the ScrollTrigger for reference
+                pin: true,
+                pinSpacing: true,
+                start: "left-=120px left",
+                end: "+=2000",
+                scrub: 1
+            }
+        });
+
+        timeln.addLabel('card1');
+        timeln.to('.card-1', {
+            xPercent: 0,
+            opacity: 1,
+            duration: 1,
+        });
+
+        timeln.from('.card-2', {
+            yPercent: -175,
+            opacity: 0,
+            duration: 1
+        });
+        timeln.addLabel("card2");
+
+        timeln.to(".card-1", {
+            scale: 1,
+            yPercent: 0,
+            opacity: 0,
+            duration: 1
+        });
+
+        timeln.to('.card-2', {
+            yPercent: -0,
+            opacity: 1,
+            duration: 1
+        });
+
+        timeln.from('.card-3', {
+            yPercent: -75,
+            opacity: 0,
+            duration: 1
+        });
+        timeln.addLabel('card3');
+
+        timeln.to(".card-2", {
+            scale: 1,
+            yPercent: -0.4,
+            opacity: 0,
+            duration: 1
+        });
+
+        timeln.to(".card-3", {
+            yPercent: 0,
+            opacity: 1,
+            duration: 1
+        });
+
+        // New animations for card 4
+        timeln.from('.card-4', {
+            yPercent: 75,
+            opacity: 0,
+            duration: 1
+        });
+        timeln.addLabel('card4');
+
+        timeln.to(".card-3", {
+            scale: 1,
+            yPercent: -0.4,
+            opacity: 0,
+            duration: 1
+        });
+
+        timeln.to(".card-4", {
+            yPercent: -70,
+            opacity: 1,
+            duration: 1
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <style>
+        /* @font-face {
+            font-family: Slussen;
+            src: url(/fonts/Slussen-Compressed-Black.woff2) format("woff2");
+            font-display: swap;
+            font-weight: 900;
+            font-stretch: compressed;
+        } */
+
+        /* body {
+            background: #000;
+            margin: 0;
+            padding: 0;
+            color: #ff98a2;
+            font-family: Slussen;
+        } */
+
+        .cardscus {
+            height: 70vh;
+            width: 90%;
+            margin: auto;
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .cardslide {
+            position: absolute;
+            max-width: 100%;
+            width: 100%;
+            height: 100%;
+            background: #c6c4c4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7px;
+            margin-bottom: 50px;
+        }
+
+        .card-1 {
+            left: 0;
+            top: 0;
+        }
+
+        .card-2 {
+            left: 35px;
+            /* top: 35px; */
+        }
+
+        .card-3 {
+            /* left: 70px; */
+            /* top: 70px; */
+        }
+
+        .card-4 {
+            /* left: 105px; */
+            /* top: 105px; */
+        }
+
+        .card h2 {
+            font-size: 80px;
+            font-weight: 900;
+            font-stretch: condensed;
+            color: #ff98a2;
+            text-transform: uppercase;
+        }
+
+        .content-image {
+            max-width: 500px;
+        }
+    </style>
+
+</body>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro debitis quasi inventore molestiae itaque autem animi
+nulla nihil non consequatur sint dolorum a, odio laudantium ipsam odit vero voluptate, est amet aliquam in ducimus
+reprehenderit ex numquam! Maiores deleniti deserunt accusamus quam a, optio qui odio saepe est quaerat neque dolorum
+voluptas nesciunt temporibus exercitationem sit aut eius debitis obcaecati, nihil voluptates. Quisquam cum nihil
+delectus at non quia quidem nobis incidunt asperiores commodi? Iste porro quod similique harum, expedita labore, aliquam
+voluptas eum debitis esse accusamus sed fugit aspernatur corporis. Dicta ad aut nisi atque omnis voluptatum, enim
+adipisci obcaecati excepturi commodi repellat corrupti molestiae eius facilis nemo saepe sint pariatur cupiditate
+incidunt provident, harum quidem. Fuga eaque possimus earum, tenetur eius minima ullam illo qui dolorum quas non quis
+accusantium! Dicta officiis odio esse, tempora modi quasi reiciendis, necessitatibus mollitia, quisquam numquam aliquam.
+Libero qui porro at autem quidem vitae deleniti? Voluptas maiores eos praesentium officia, explicabo, ipsam dolorum
+suscipit quos sint tempore reiciendis quisquam fuga voluptatum earum? Suscipit, accusantium rem consequatur totam, ab
+quaerat aliquid corporis adipisci voluptatum modi dicta, amet nihil fuga. Vel fugiat natus odit, dolor iste dicta nisi
+id ratione suscipit deserunt alias, amet, ab expedita sint obcaecati dolore cum asperiores exercitationem odio officia
+voluptate repellat. Quas quod, et temporibus omnis dolor alias recusandae minima incidunt enim debitis laborum
+architecto laudantium esse, necessitatibus dolorum earum voluptatum possimus commodi, veniam impedit est adipisci amet
+culpa quisquam. Deleniti optio velit deserunt non nisi est assumenda eveniet. Alias, in! Rerum praesentium ad doloremque
+numquam, aut quod laborum facilis nihil accusamus, minima voluptate eligendi? Molestiae magnam quas pariatur
+exercitationem, laudantium rerum odit sapiente minima quos voluptatibus, consectetur nam quidem, sunt eligendi
+distinctio repellendus soluta. Dolore recusandae possimus itaque doloribus, optio odio omnis! Tempora, porro odio modi
+voluptates accusantium soluta deserunt sequi esse, distinctio provident ipsum voluptatum nemo totam fugiat autem quas
+consectetur repellendus, necessitatibus eos quaerat nisi. Tenetur, asperiores? Cupiditate, veritatis nostrum
+necessitatibus hic sit impedit earum maiores asperiores atque assumenda accusantium aspernatur optio nulla ab delectus
+voluptatem! Officia impedit mollitia corporis magnam. Ex fugit suscipit expedita sequi, provident delectus, quia quod
+quaerat nemo nulla repellendus ipsum repellat ipsam nesciunt. Error voluptates omnis deleniti adipisci doloremque
+possimus ut, quod cumque sit maxime iste molestiae laudantium cupiditate cum repellat iure harum doloribus eligendi
+autem magnam reiciendis accusamus placeat perspiciatis. Vero, harum distinctio aut repellat, incidunt, pariatur laborum
+nihil vel quia qui veritatis dolores. Dolorum officiis, aut est temporibus, qui delectus dolorem a cumque eveniet ad
+non. Cum odit nostrum tempore dignissimos qui error recusandae, perferendis consequatur. Aspernatur neque quae iure
+adipisci sed deleniti magnam, tempora natus reprehenderit facilis obcaecati eum, perferendis minus quis at distinctio
+autem provident id inventore corrupti alias eaque cum rem ducimus? Architecto rem rerum eaque, unde in ad ipsa magni
+fugiat placeat, labore, reprehenderit ut totam et perferendis voluptatibus tenetur sed quam! Voluptas necessitatibus
+facere quidem? Officia dolor hic nostrum ab temporibus dolores explicabo, officiis saepe obcaecati impedit nesciunt
+nobis sapiente, deleniti at est aut?
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro debitis quasi inventore molestiae itaque autem animi
+nulla nihil non consequatur sint dolorum a, odio laudantium ipsam odit vero voluptate, est amet aliquam in ducimus
+reprehenderit ex numquam! Maiores deleniti deserunt accusamus quam a, optio qui odio saepe est quaerat neque dolorum
+voluptas nesciunt temporibus exercitationem sit aut eius debitis obcaecati, nihil voluptates. Quisquam cum nihil
+delectus at non quia quidem nobis incidunt asperiores commodi? Iste porro quod similique harum, expedita labore, aliquam
+voluptas eum debitis esse accusamus sed fugit aspernatur corporis. Dicta ad aut nisi atque omnis voluptatum, enim
+adipisci obcaecati excepturi commodi repellat corrupti molestiae eius facilis nemo saepe sint pariatur cupiditate
+incidunt provident, harum quidem. Fuga eaque possimus earum, tenetur eius minima ullam illo qui dolorum quas non quis
+accusantium! Dicta officiis odio esse, tempora modi quasi reiciendis, necessitatibus mollitia, quisquam numquam aliquam.
+Libero qui porro at autem quidem vitae deleniti? Voluptas maiores eos praesentium officia, explicabo, ipsam dolorum
+suscipit quos sint tempore reiciendis quisquam fuga voluptatum earum? Suscipit, accusantium rem consequatur totam, ab
+quaerat aliquid corporis adipisci voluptatum modi dicta, amet nihil fuga. Vel fugiat natus odit, dolor iste dicta nisi
+id ratione suscipit deserunt alias, amet, ab expedita sint obcaecati dolore cum asperiores exercitationem odio officia
+voluptate repellat. Quas quod, et temporibus omnis dolor alias recusandae minima incidunt enim debitis laborum
+architecto laudantium esse, necessitatibus dolorum earum voluptatum possimus commodi, veniam impedit est adipisci amet
+culpa quisquam. Deleniti optio velit deserunt non nisi est assumenda eveniet. Alias, in! Rerum praesentium ad doloremque
+numquam, aut quod laborum facilis nihil accusamus, minima voluptate eligendi? Molestiae magnam quas pariatur
+exercitationem, laudantium rerum odit sapiente minima quos voluptatibus, consectetur nam quidem, sunt eligendi
+distinctio repellendus soluta. Dolore recusandae possimus itaque doloribus, optio odio omnis! Tempora, porro odio modi
+voluptates accusantium soluta deserunt sequi esse, distinctio provident ipsum voluptatum nemo totam fugiat autem quas
+consectetur repellendus, necessitatibus eos quaerat nisi. Tenetur, asperiores? Cupiditate, veritatis nostrum
+necessitatibus hic sit impedit earum maiores asperiores atque assumenda accusantium aspernatur optio nulla ab delectus
+voluptatem! Officia impedit mollitia corporis magnam. Ex fugit suscipit expedita sequi, provident delectus, quia quod
+quaerat nemo nulla repellendus ipsum repellat ipsam nesciunt. Error voluptates omnis deleniti adipisci doloremque
+possimus ut, quod cumque sit maxime iste molestiae laudantium cupiditate cum repellat iure harum doloribus eligendi
+autem magnam reiciendis accusamus placeat perspiciatis. Vero, harum distinctio aut repellat, incidunt, pariatur laborum
+nihil vel quia qui veritatis dolores. Dolorum officiis, aut est temporibus, qui delectus dolorem a cumque eveniet ad
+non. Cum odit nostrum tempore dignissimos qui error recusandae, perferendis consequatur. Aspernatur neque quae iure
+adipisci sed deleniti magnam, tempora natus reprehenderit facilis obcaecati eum, perferendis minus quis at distinctio
+autem provident id inventore corrupti alias eaque cum rem ducimus? Architecto rem rerum eaque, unde in ad ipsa magni
+fugiat placeat, labore, reprehenderit ut totam et perferendis voluptatibus tenetur sed quam! Voluptas necessitatibus
+facere quidem? Officia dolor hic nostrum ab temporibus dolores explicabo, officiis saepe obcaecati impedit nesciunt
+nobis sapiente, deleniti at est aut?
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro debitis quasi inventore molestiae itaque autem animi
+nulla nihil non consequatur sint dolorum a, odio laudantium ipsam odit vero voluptate, est amet aliquam in ducimus
+reprehenderit ex numquam! Maiores deleniti deserunt accusamus quam a, optio qui odio saepe est quaerat neque dolorum
+voluptas nesciunt temporibus exercitationem sit aut eius debitis obcaecati, nihil voluptates. Quisquam cum nihil
+delectus at non quia quidem nobis incidunt asperiores commodi? Iste porro quod similique harum, expedita labore, aliquam
+voluptas eum debitis esse accusamus sed fugit aspernatur corporis. Dicta ad aut nisi atque omnis voluptatum, enim
+adipisci obcaecati excepturi commodi repellat corrupti molestiae eius facilis nemo saepe sint pariatur cupiditate
+incidunt provident, harum quidem. Fuga eaque possimus earum, tenetur eius minima ullam illo qui dolorum quas non quis
+accusantium! Dicta officiis odio esse, tempora modi quasi reiciendis, necessitatibus mollitia, quisquam numquam aliquam.
+Libero qui porro at autem quidem vitae deleniti? Voluptas maiores eos praesentium officia, explicabo, ipsam dolorum
+suscipit quos sint tempore reiciendis quisquam fuga voluptatum earum? Suscipit, accusantium rem consequatur totam, ab
+quaerat aliquid corporis adipisci voluptatum modi dicta, amet nihil fuga. Vel fugiat natus odit, dolor iste dicta nisi
+id ratione suscipit deserunt alias, amet, ab expedita sint obcaecati dolore cum asperiores exercitationem odio officia
+voluptate repellat. Quas quod, et temporibus omnis dolor alias recusandae minima incidunt enim debitis laborum
+architecto laudantium esse, necessitatibus dolorum earum voluptatum possimus commodi, veniam impedit est adipisci amet
+culpa quisquam. Deleniti optio velit deserunt non nisi est assumenda eveniet. Alias, in! Rerum praesentium ad doloremque
+numquam, aut quod laborum facilis nihil accusamus, minima voluptate eligendi? Molestiae magnam quas pariatur
+exercitationem, laudantium rerum odit sapiente minima quos voluptatibus, consectetur nam quidem, sunt eligendi
+distinctio repellendus soluta. Dolore recusandae possimus itaque doloribus, optio odio omnis! Tempora, porro odio modi
+voluptates accusantium soluta deserunt sequi esse, distinctio provident ipsum voluptatum nemo totam fugiat autem quas
+consectetur repellendus, necessitatibus eos quaerat nisi. Tenetur, asperiores? Cupiditate, veritatis nostrum
+necessitatibus hic sit impedit earum maiores asperiores atque assumenda accusantium aspernatur optio nulla ab delectus
+voluptatem! Officia impedit mollitia corporis magnam. Ex fugit suscipit expedita sequi, provident delectus, quia quod
+quaerat nemo nulla repellendus ipsum repellat ipsam nesciunt. Error voluptates omnis deleniti adipisci doloremque
+possimus ut, quod cumque sit maxime iste molestiae laudantium cupiditate cum repellat iure harum doloribus eligendi
+autem magnam reiciendis accusamus placeat perspiciatis. Vero, harum distinctio aut repellat, incidunt, pariatur laborum
+nihil vel quia qui veritatis dolores. Dolorum officiis, aut est temporibus, qui delectus dolorem a cumque eveniet ad
+non. Cum odit nostrum tempore dignissimos qui error recusandae, perferendis consequatur. Aspernatur neque quae iure
+adipisci sed deleniti magnam, tempora natus reprehenderit facilis obcaecati eum, perferendis minus quis at distinctio
+autem provident id inventore corrupti alias eaque cum rem ducimus? Architecto rem rerum eaque, unde in ad ipsa magni
+fugiat placeat, labore, reprehenderit ut totam et perferendis voluptatibus tenetur sed quam! Voluptas necessitatibus
+facere quidem? Officia dolor hic nostrum ab temporibus dolores explicabo, officiis saepe obcaecati impedit nesciunt
+nobis sapiente, deleniti at est aut?
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro debitis quasi inventore molestiae itaque autem animi
+nulla nihil non consequatur sint dolorum a, odio laudantium ipsam odit vero voluptate, est amet aliquam in ducimus
+reprehenderit ex numquam! Maiores deleniti deserunt accusamus quam a, optio qui odio saepe est quaerat neque dolorum
+voluptas nesciunt temporibus exercitationem sit aut eius debitis obcaecati, nihil voluptates. Quisquam cum nihil
+delectus at non quia quidem nobis incidunt asperiores commodi? Iste porro quod similique harum, expedita labore, aliquam
+voluptas eum debitis esse accusamus sed fugit aspernatur corporis. Dicta ad aut nisi atque omnis voluptatum, enim
+adipisci obcaecati excepturi commodi repellat corrupti molestiae eius facilis nemo saepe sint pariatur cupiditate
+incidunt provident, harum quidem. Fuga eaque possimus earum, tenetur eius minima ullam illo qui dolorum quas non quis
+accusantium! Dicta officiis odio esse, tempora modi quasi reiciendis, necessitatibus mollitia, quisquam numquam aliquam.
+Libero qui porro at autem quidem vitae deleniti? Voluptas maiores eos praesentium officia, explicabo, ipsam dolorum
+suscipit quos sint tempore reiciendis quisquam fuga voluptatum earum? Suscipit, accusantium rem consequatur totam, ab
+quaerat aliquid corporis adipisci voluptatum modi dicta, amet nihil fuga. Vel fugiat natus odit, dolor iste dicta nisi
+id ratione suscipit deserunt alias, amet, ab expedita sint obcaecati dolore cum asperiores exercitationem odio officia
+voluptate repellat. Quas quod, et temporibus omnis dolor alias recusandae minima incidunt enim debitis laborum
+architecto laudantium esse, necessitatibus dolorum earum voluptatum possimus commodi, veniam impedit est adipisci amet
+culpa quisquam. Deleniti optio velit deserunt non nisi est assumenda eveniet. Alias, in! Rerum praesentium ad doloremque
+numquam, aut quod laborum facilis nihil accusamus, minima voluptate eligendi? Molestiae magnam quas pariatur
+exercitationem, laudantium rerum odit sapiente minima quos voluptatibus, consectetur nam quidem, sunt eligendi
+distinctio repellendus soluta. Dolore recusandae possimus itaque doloribus, optio odio omnis! Tempora, porro odio modi
+voluptates accusantium soluta deserunt sequi esse, distinctio provident ipsum voluptatum nemo totam fugiat autem quas
+consectetur repellendus, necessitatibus eos quaerat nisi. Tenetur, asperiores? Cupiditate, veritatis nostrum
+necessitatibus hic sit impedit earum maiores asperiores atque assumenda accusantium aspernatur optio nulla ab delectus
+voluptatem! Officia impedit mollitia corporis magnam. Ex fugit suscipit expedita sequi, provident delectus, quia quod
+quaerat nemo nulla repellendus ipsum repellat ipsam nesciunt. Error voluptates omnis deleniti adipisci doloremque
+possimus ut, quod cumque sit maxime iste molestiae laudantium cupiditate cum repellat iure harum doloribus eligendi
+autem magnam reiciendis accusamus placeat perspiciatis. Vero, harum distinctio aut repellat, incidunt, pariatur laborum
+nihil vel quia qui veritatis dolores. Dolorum officiis, aut est temporibus, qui delectus dolorem a cumque eveniet ad
+non. Cum odit nostrum tempore dignissimos qui error recusandae, perferendis consequatur. Aspernatur neque quae iure
+adipisci sed deleniti magnam, tempora natus reprehenderit facilis obcaecati eum, perferendis minus quis at distinctio
+autem provident id inventore corrupti alias eaque cum rem ducimus? Architecto rem rerum eaque, unde in ad ipsa magni
+fugiat placeat, labore, reprehenderit ut totam et perferendis voluptatibus tenetur sed quam! Voluptas necessitatibus
+facere quidem? Officia dolor hic nostrum ab temporibus dolores explicabo, officiis saepe obcaecati impedit nesciunt
+nobis sapiente, deleniti at est aut?
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro debitis quasi inventore molestiae itaque autem animi
+nulla nihil non consequatur sint dolorum a, odio laudantium ipsam odit vero voluptate, est amet aliquam in ducimus
+reprehenderit ex numquam! Maiores deleniti deserunt accusamus quam a, optio qui odio saepe est quaerat neque dolorum
+voluptas nesciunt temporibus exercitationem sit aut eius debitis obcaecati, nihil voluptates. Quisquam cum nihil
+delectus at non quia quidem nobis incidunt asperiores commodi? Iste porro quod similique harum, expedita labore, aliquam
+voluptas eum debitis esse accusamus sed fugit aspernatur corporis. Dicta ad aut nisi atque omnis voluptatum, enim
+adipisci obcaecati excepturi commodi repellat corrupti molestiae eius facilis nemo saepe sint pariatur cupiditate
+incidunt provident, harum quidem. Fuga eaque possimus earum, tenetur eius minima ullam illo qui dolorum quas non quis
+accusantium! Dicta officiis odio esse, tempora modi quasi reiciendis, necessitatibus mollitia, quisquam numquam aliquam.
+Libero qui porro at autem quidem vitae deleniti? Voluptas maiores eos praesentium officia, explicabo, ipsam dolorum
+suscipit quos sint tempore reiciendis quisquam fuga voluptatum earum? Suscipit, accusantium rem consequatur totam, ab
+quaerat aliquid corporis adipisci voluptatum modi dicta, amet nihil fuga. Vel fugiat natus odit, dolor iste dicta nisi
+id ratione suscipit deserunt alias, amet, ab expedita sint obcaecati dolore cum asperiores exercitationem odio officia
+voluptate repellat. Quas quod, et temporibus omnis dolor alias recusandae minima incidunt enim debitis laborum
+architecto laudantium esse, necessitatibus dolorum earum voluptatum possimus commodi, veniam impedit est adipisci amet
+culpa quisquam. Deleniti optio velit deserunt non nisi est assumenda eveniet. Alias, in! Rerum praesentium ad doloremque
+numquam, aut quod laborum facilis nihil accusamus, minima voluptate eligendi? Molestiae magnam quas pariatur
+exercitationem, laudantium rerum odit sapiente minima quos voluptatibus, consectetur nam quidem, sunt eligendi
+distinctio repellendus soluta. Dolore recusandae possimus itaque doloribus, optio odio omnis! Tempora, porro odio modi
+voluptates accusantium soluta deserunt sequi esse, distinctio provident ipsum voluptatum nemo totam fugiat autem quas
+consectetur repellendus, necessitatibus eos quaerat nisi. Tenetur, asperiores? Cupiditate, veritatis nostrum
+necessitatibus hic sit impedit earum maiores asperiores atque assumenda accusantium aspernatur optio nulla ab delectus
+voluptatem! Officia impedit mollitia corporis magnam. Ex fugit suscipit expedita sequi, provident delectus, quia quod
+quaerat nemo nulla repellendus ipsum repellat ipsam nesciunt. Error voluptates omnis deleniti adipisci doloremque
+possimus ut, quod cumque sit maxime iste molestiae laudantium cupiditate cum repellat iure harum doloribus eligendi
+autem magnam reiciendis accusamus placeat perspiciatis. Vero, harum distinctio aut repellat, incidunt, pariatur laborum
+nihil vel quia qui veritatis dolores. Dolorum officiis, aut est temporibus, qui delectus dolorem a cumque eveniet ad
+non. Cum odit nostrum tempore dignissimos qui error recusandae, perferendis consequatur. Aspernatur neque quae iure
+adipisci sed deleniti magnam, tempora natus reprehenderit facilis obcaecati eum, perferendis minus quis at distinctio
+autem provident id inventore corrupti alias eaque cum rem ducimus? Architecto rem rerum eaque, unde in ad ipsa magni
+fugiat placeat, labore, reprehenderit ut totam et perferendis voluptatibus tenetur sed quam! Voluptas necessitatibus
+facere quidem? Officia dolor hic nostrum ab temporibus dolores explicabo, officiis saepe obcaecati impedit nesciunt
+nobis sapiente, deleniti at est aut?
+
+</html>
